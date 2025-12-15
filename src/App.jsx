@@ -2,6 +2,7 @@
 import { Footer } from "./components/Footer";
 import { Navbar } from "./components/Navbar";
 import { Sidebar } from "./components/Sidebar";
+import UsersChart from "./components/UsersChart";
 import Dashboard from './pages/Dashboard';
 
 export default function App() {
@@ -16,6 +17,7 @@ export default function App() {
          <Dashboard/>
         </div>
       </div>
+     <UsersChart/>
     <Footer/>
      
     </div>

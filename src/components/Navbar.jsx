@@ -1,27 +1,51 @@
-export function Navbar(){
-    return (
-        <>
-         {/* Navbar */}
-      <header className="bg-slate-400 shadow text-white">
-        <div className="mx-auto max-w-6xl px-4 py-4 flex items-center justify-between">
-          <div className="font-bold"> <h1 className="text-xl font-bold">Overview</h1>
-      <span className="text-gray-600">Admin</span></div>
+export function Navbar() {
+  return (
+    <header className="sticky top-0 z-30 bg-white border-b shadow-sm dark:bg-gray-900">
+      <div className="flex items-center justify-between px-6 py-4">
 
-
-          {/* Desktop links */}
-          <nav className="hidden md:flex gap-6 text-sm text-slate-200">
-            <a className="hover:text-red" href="#">Home</a>
-            <a className="hover:text-red" href="#">About</a>
-            <a className="hover:text-red" href="#">Contact</a>
-          </nav>
-
-          {/* Mobile button (شكل فقط) */}
-          <button className="md:hidden rounded-lg bg-slate-700 px-3 py-2 text-sm">
-            Menu
-          </button>
+        {/* Left */}
+        <div className="flex items-center gap-4">
+          <h1 className="text-lg font-bold text-gray-800 dark:text-white">
+            E-Commerce Dashboard
+          </h1>
         </div>
-      </header>
-        
-        </>
-    )
+
+        {/* Search */}
+        <div className="hidden md:block">
+          <input
+            type="text"
+            placeholder="Search products, orders..."
+            className="w-64 rounded-lg border px-3 py-2 text-sm outline-none focus:ring dark:bg-gray-800 dark:text-white"
+          />
+        </div>
+
+        {/* Right */}
+        <div className="flex items-center gap-4">
+
+          {/* Dark Mode */}
+          <button
+            onClick={() =>
+              document.documentElement.classList.toggle("dark")
+            }
+            className="rounded-lg bg-gray-200 px-3 py-1 text-sm dark:bg-gray-700 dark:text-white"
+          >
+            🌙
+          </button>
+
+          {/* Admin */}
+          <div className="flex items-center gap-2 rounded-lg bg-gray-100 px-3 py-1 dark:bg-gray-800">
+            <span className="text-sm font-medium text-gray-700 dark:text-white">
+              Admin
+            </span>
+          </div>
+
+          {/* Mobile Menu */}
+          <button className="md:hidden rounded-lg bg-gray-200 px-3 py-2 dark:bg-gray-700">
+            ☰
+          </button>
+
+        </div>
+      </div>
+    </header>
+  );
 }
