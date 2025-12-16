@@ -1,4 +1,19 @@
+import { useNavigate } from "react-router-dom";
+import { signOut } from "firebase/auth";
+import { auth } from "../firebaseConfig";
+
 export function Navbar() {
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      navigate("/login");
+    } catch (error) {
+      console.error("Logout error:", error);
+    }
+  };
+
   return (
     <header className="sticky top-0 z-30 bg-white border-b shadow-sm dark:bg-gray-900">
       <div className="flex items-center justify-between px-6 py-4">
@@ -38,6 +53,14 @@ export function Navbar() {
               Admin
             </span>
           </div>
+
+          {/* Logout */}
+          <button
+            onClick={handleLogout}
+            className="rounded-lg bg-red-500 px-4 py-1 text-sm text-white hover:bg-red-600 transition"
+          >
+            Logout
+          </button>
 
           {/* Mobile Menu */}
           <button className="md:hidden rounded-lg bg-gray-200 px-3 py-2 dark:bg-gray-700">
