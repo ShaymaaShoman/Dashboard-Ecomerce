@@ -22,3 +22,33 @@ body {
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/* الأنماط الافتراضية للوضع الفاتح (Light Mode) */
+body {
+  background-color: white; /* خلفية بيضاء */
+  color: black;            /* نص أسود */
+  transition: background-color 0.3s, color 0.3s; /* انتقال سلس */
+}
+
+/* ------------------------------------------------ */
+
+/* الأنماط الخاصة بالوضع الداكن (Dark Mode) */
+/* تستهدف العنصر <body> عندما يحتوي العنصر <html> على الكلاس "dark" */
+html.dark body {
+  background-color: #121212; /* لون أسود داكن للخلفية */
+  color: #f0f0f0;            /* لون فاتح للنص */
+}
+
+/* (اختياري) تأكد أن العناصر الأب الأخرى تتبع هذا النمط */
+html.dark #root {
+  background-color: #121212; 
+}
+.card {
+  background-color: #ffffff; 
+  border: 1px solid #ccc;
+}
+
+/* أنماط البطاقة في الوضع الداكن */
+html.dark .card {
+  background-color: #1e1e1e; /* لون أغمق للبطاقة */
+  border-color: #333;
+}

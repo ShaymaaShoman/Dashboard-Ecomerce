@@ -30,7 +30,7 @@ export default function UsersChart() {
   }));
 
   return (
-    <div className="bg-white p-6 rounded-lg shadow mt-6">
+    <div className="bg-white p-6 rounded-lg shadow mt-6 card">
       <h3 className="mb-4 font-bold">Users Chart</h3>
       <ResponsiveContainer width="100%" height={300}>
         {/* NOTE: You should use 'data' prop, not 'users' prop for Recharts BarChart */}
