@@ -37,6 +37,7 @@ export function Sidebar() {
       >
         Analytics 📈
       </NavLink>
+      
       <NavLink
         to="/"
         className={({ isActive }) =>

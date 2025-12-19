@@ -1,8 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { signOut } from "firebase/auth";
 import { auth } from "../firebaseConfig";
-
-export function Navbar() {
+const Navbar = () => {
   const navigate = useNavigate();
 
   const handleLogout = async () => {
@@ -72,3 +71,4 @@ export function Navbar() {
     </header>
   );
 }
+export default Navbar;

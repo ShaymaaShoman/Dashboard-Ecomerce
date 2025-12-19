@@ -3,8 +3,8 @@ import { DashboardLayout } from "./layouts/DashboardLayout";
 import UsersChart from "./components/UsersChart";
 import Dashboard from './pages/Dashboard';
 import { useAuth } from "./auth/auth.jsx";
-import Login from "./pages/Login.jsx"; // لا حاجة لأقواس {} إذا كان export default
-
+import Login from "./pages/Login.jsx"; 
+import Users from "./pages/Users.jsx"
 export default function App() {
   const { user, loading } = useAuth();
   
@@ -27,6 +27,8 @@ export default function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/analytics" element={<UsersChart />} />
         </Route>
+        <Route path="/users" element={<Users />} />
+
       </Routes>
     </BrowserRouter>
   );

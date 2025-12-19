@@ -1,5 +1,5 @@
 import { BarChart, Bar, XAxis, Tooltip, ResponsiveContainer } from "recharts";
-import { getUsers } from "../API/User";
+import { getUsers } from "../API/user";
  import { useQuery } from "@tanstack/react-query";
 export default function UsersChart() {
   const { data: users, isLoading, isError } = useQuery({
