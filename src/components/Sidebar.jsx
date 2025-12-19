@@ -17,7 +17,7 @@ export function Sidebar() {
         className={({ isActive }) =>
           `block rounded-lg px-4 py-2 mb-2 ${
             isActive
-              ? "bg-indigo-500 text-white"
+              ? "bg-pink-500 text-white"
               : "text-slate-600 hover:bg-slate-100 dark:text-gray-300 dark:hover:bg-gray-700"
           }`
         }
@@ -30,7 +30,7 @@ export function Sidebar() {
         className={({ isActive }) =>
           `block rounded-lg px-4 py-2 ${
             isActive
-              ? "bg-indigo-500 text-white"
+              ? "bg-pink-500 text-white"
               : "text-slate-600 hover:bg-slate-100 dark:text-gray-300 dark:hover:bg-gray-700"
           }`
         }
@@ -43,7 +43,7 @@ export function Sidebar() {
         className={({ isActive }) =>
           `block rounded-lg px-4 py-2 ${
             isActive
-              ? "bg-indigo-500 text-white"
+              ? "bg-pink-500 text-white"
               : "text-slate-600 hover:bg-slate-100 dark:text-gray-300 dark:hover:bg-gray-700"
           }`
         }
