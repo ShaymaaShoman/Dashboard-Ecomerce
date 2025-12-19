@@ -87,13 +87,13 @@ export default function Dashboard() {
           <tbody>
             {users.length === 0 ? (
               <tr>
-                <td colSpan="3" className="text-center py-6 text-gray-500">
+                <td colSpan="3" className="text-center py-6 text-gray-500 dark:text-gray-300">
                   No users found
                 </td>
               </tr>
             ) : (
               users.map((user) => (
-  <tr key={user._id} className="border-t hover:bg-pink-50">
+  <tr key={user._id} className="border-t hover:bg-pink-50 dark:text-gray-500">
     <td className="px-4 py-3">{user.name}</td>
     <td className="px-4 py-3">{user.email}</td>
     <td className="px-4 py-3">{user.role}</td>
