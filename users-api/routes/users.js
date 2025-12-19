@@ -72,4 +72,16 @@ router.delete("/:id", async (req, res) => {
   res.json({ message: "User deleted" });
 });
 
+// update status
+router.patch("/users/:id/status", async (req, res) => {
+  const { status } = req.body;
+  const user = await User.findByIdAndUpdate(
+    req.params.id,
+    { status },
+    { new: true }
+  );
+  res.json(user);
+});
+
+
 export default router;

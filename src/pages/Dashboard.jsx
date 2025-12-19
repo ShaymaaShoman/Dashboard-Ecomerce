@@ -1,7 +1,7 @@
 // src/pages/Dashboard.jsx
 import { useState } from "react";
-import { useQuery } from "@tanstack/react-query";
-import { getUsers } from "../API/user";
+import {useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { getUsers, deleteUser, updateStatus } from "../API/user";
 
 export default function Dashboard() {
   const [page, setPage] = useState(1);
@@ -15,6 +15,16 @@ export default function Dashboard() {
       getUsers({ page, limit, sortBy, order }),
     keepPreviousData: true,
   });
+    const deleteMut = useMutation({
+    mutationFn: deleteUser,
+    onSuccess: () => queryClient.invalidateQueries(["users"]),
+  });
+
+  const statusMut = useMutation({
+    mutationFn: updateStatus,
+    onSuccess: () => queryClient.invalidateQueries(["users"]),
+  });
+
 
   if (isLoading) return <p className="p-6">Loading...</p>;
   if (isError) return <p className="p-6 text-red-500">Error loading users</p>;
@@ -58,6 +68,20 @@ export default function Dashboard() {
               >
                 Role {sortBy === "role" && (order === "asc" ? "↑" : "↓")}
               </th>
+               <th
+                className="px-4 py-3 cursor-pointer"
+                onClick={() => toggleSort("name")}
+              >
+                Age {sortBy === "name" && (order === "asc" ? "↑" : "↓")}
+              </th>
+               <th
+                className="px-4 py-3 cursor-pointer"
+                onClick={() => toggleSort("name")}
+              >
+                Status {sortBy === "name" && (order === "asc" ? "↑" : "↓")}
+              </th>
+               
+
             </tr>
           </thead>
           <tbody>
@@ -69,12 +93,44 @@ export default function Dashboard() {
               </tr>
             ) : (
               users.map((user) => (
-                <tr key={user._id} className="border-t hover:bg-pink-50">
-                  <td className="px-4 py-3">{user.name}</td>
-                  <td className="px-4 py-3">{user.email}</td>
-                  <td className="px-4 py-3">{user.role}</td>
-                </tr>
-              ))
+  <tr key={user._id} className="border-t hover:bg-pink-50">
+    <td className="px-4 py-3">{user.name}</td>
+    <td className="px-4 py-3">{user.email}</td>
+    <td className="px-4 py-3">{user.role}</td>
+    <td className="px-4 py-3">{user.age}</td>
+    <td className="px-4 py-3">{user.status}</td>
+    <td className="p-2 border">
+      <span
+        className={`px-2 py-1 rounded text-white text-sm ${
+          user.status === "approved"
+            ? "bg-green-500"
+            : "bg-yellow-500"
+        }`}
+      >
+        {user.status}
+      </span>
+    </td>
+    <td className="p-2 border space-x-2">
+      {user.status === "pending" && (
+        <button
+          onClick={() =>
+            statusMut.mutate({ id: user._id, status: "approved" })
+          }
+          className="bg-blue-500 text-white px-3 py-1 rounded mb-2"
+        >
+          Approve
+        </button>
+      )}
+      <button
+        onClick={() => deleteMut.mutate(user._id)}
+        className="bg-red-500 text-white px-3 py-1 rounded"
+      >
+        Delete
+      </button>
+    </td>
+  </tr>
+))
+
             )}
           </tbody>
         </table>
