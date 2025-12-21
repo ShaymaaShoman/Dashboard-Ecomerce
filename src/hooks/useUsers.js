@@ -1,8 +1,13 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { api } from "../API";
+import axios from "axios";
+
+export const api = axios.create({
+  baseURL: import.meta.env.VITE_API_URL,
+});
 
 /* GET USERS */
 export const useUsers = ({ page, limit, search, sort }) => {
+  
   return useQuery({
     queryKey: ["users", page, search, sort],
     queryFn: async () => {
