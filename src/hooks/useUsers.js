@@ -1,5 +1,5 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { api } from "../API/api";
+import { api } from "../API";
 
 /* GET USERS */
 export const useUsers = ({ page, limit, search, sort }) => {
